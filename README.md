@@ -7,7 +7,7 @@ A distributed system is a network of independent computers that work together to
 - **Vertical Scaling:** Increasing the capacity of a single machine, suitable for smaller workloads.
 - **Horizontal Scaling:** Adding more machines or nodes, enhancing scalability and fault tolerance for larger workloads.
 
-![Remote Image](media.geeksforgeeks.org/wp-content/cdn-uploads/20210209202449/Scaling-Concept.png)
+![Remote Image](https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210209202449/Scaling-Concept.png)
 
 ## Caching:
 Caching involves storing frequently accessed data temporarily to reduce retrieval latency and improve system performance.
