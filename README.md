@@ -7,18 +7,20 @@ A distributed system is a network of independent computers that work together to
 - **Vertical Scaling:** Increasing the capacity of a single machine, suitable for smaller workloads.
 - **Horizontal Scaling:** Adding more machines or nodes, enhancing scalability and fault tolerance for larger workloads.
 
-![Remote Image](https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210209202449/Scaling-Concept.png)
+![image](https://github.com/sergiobriito/system-design/assets/64617586/a5d34021-13ad-43fd-bdb9-09a0c2ee4378)
 
 ## Caching:
 Caching involves storing frequently accessed data temporarily to reduce retrieval latency and improve system performance.
 
-![Remote Image](https://cdn-images-1.medium.com/max/1080/1*KNlUFMg72Ziy4QbbPpOwcw.png)
+![image](https://github.com/sergiobriito/system-design/assets/64617586/6b4cf538-e5fe-42a7-8075-f4d3a537c54f)
+
 
 ## CDN (Content Delivery Network)
 
 A **CDN (Content Delivery Network)** is a network of distributed servers delivering web content to users based on their geographical location, reducing latency and improving content delivery speed.
 
-![Remote Image](https://exponent-blog.ghost.io/content/images/pmlesson/2021/04/image-1.png)
+![image](https://github.com/sergiobriito/system-design/assets/64617586/94e6afd6-da5d-479e-9900-eef97aece6c9)
+
 
 ### Components of a CDN:
 
@@ -39,12 +41,12 @@ In summary, a CDN is a crucial infrastructure component for optimizing content d
 ## DNS (Domain Name System):
 DNS translates human-readable domain names into IP addresses, enabling users to access websites using names instead of numeric IP addresses.
 
-![Remote Image](https://d1.awsstatic.com/Route53/how-route-53-routes-traffic.8d313c7da075c3c7303aaef32e89b5d0b7885e7c.png)
+![image](https://github.com/sergiobriito/system-design/assets/64617586/77b05ec8-cc3c-436d-8c5d-ece8d45b9002)
 
 ## Load Balancer:
 A load balancer distributes incoming network traffic across multiple servers to optimize resource utilization and improve system reliability.
 
-![Remote Image](https://www.cloud4u.com/upload/medialibrary/5a6/0_CCK15OF3DizmOITk.png)
+![image](https://github.com/sergiobriito/system-design/assets/64617586/7437cdd0-a8c3-4eeb-b3bb-60ed07c7f480)
 
 ## Servers (SQL and NoSQL):
 - **SQL Servers:** Relational databases using SQL for defining and manipulating data.
@@ -95,13 +97,13 @@ Datacenters house computer systems, networking equipment, and resources supporti
 
 A message queue is a fundamental component in distributed computing and software architecture, providing a reliable and efficient communication mechanism between different components or systems. It operates on the principle of asynchronous communication, allowing decoupling between producers and consumers of messages. In a message queue system, messages are placed in a queue by a sender and retrieved by a receiver, ensuring a smooth and orderly flow of information. This decoupling enhances system scalability and resilience, as components can operate independently, and any temporary imbalances in workload or processing speed can be mitigated. Additionally, message queues facilitate the integration of disparate systems, enabling seamless communication between applications regardless of their underlying technologies. This robust and flexible communication paradigm is integral to the development of scalable, distributed, and fault-tolerant systems in the realm of modern software engineering.
 
-![Remote Image](https://miro.medium.com/v2/resize:fit:828/format:webp/1*AxiArIjSXAo398GIKAKXjg.png)
+![image](https://github.com/sergiobriito/system-design/assets/64617586/9eb76209-8960-45cf-9150-100b5689a942)
 
 ## Back-of-the-Envelope Metrics:
 Quick calculations estimating system requirements and performance metrics, including throughput and response time.
 
 ### Latency Numbers Every Programmer Should Know
-![Remote Image](https://miro.medium.com/v2/resize:fit:786/format:webp/1*-LXqUWmvJ_nT5OQBbzEBLg.png)
+![image](https://github.com/sergiobriito/system-design/assets/64617586/6d1f8289-dbe6-40dd-841d-6756ffbe4373)
 
 ## Multiple Servers and Consistent Hashing:
 ### Multiple Servers:
@@ -123,7 +125,8 @@ Consistent hashing is like a smart way of spreading data across multiple compute
 
 1. **Hash Ring**: The hash function outputs within the range [0, INT_MAX], forming a "ring" known as the "Hash Ring."
 
-![Hash Ring](https://1865312850-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-M4Bkp-b8HYQgJF1rkOc%2F-M5FBnlgZvYhoF2aHfGp%2F-M5FDUTlsmjNHdO0Tkjm%2Fimage.png?alt=media&token=1847441c-aedc-4c5f-b024-112d6296f544)
+![image](https://github.com/sergiobriito/system-design/assets/64617586/118c6dfc-4cea-4f26-8fb2-4934828ca922)
+
 
 2. **Server Mapping**: Servers (A, B, C) are hashed onto the ring. Each key is associated with the closest server in a clockwise direction.
 
@@ -132,17 +135,20 @@ Consistent hashing is like a smart way of spreading data across multiple compute
    - "Casey" maps to server A
    - Server C remains idle
    
-![Hash Ring](https://1865312850-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-M4Bkp-b8HYQgJF1rkOc%2F-M5FErdzRLhnaO3oZqhK%2F-M5FFr2cj8HdpUos6aj8%2Fimage.png?alt=media&token=f861b386-73b9-4369-811b-4451c60df4e5)
+![image](https://github.com/sergiobriito/system-design/assets/64617586/c8fee3b2-f768-4188-9339-ad92113d5d9d)
+
 
 #### Adding and Removing Nodes
 
 - **Adding a Node (Server D)**: Some keys, originally mapped to other servers, now map to server D.
 
-![Hash Ring](https://1865312850-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-M4Bkp-b8HYQgJF1rkOc%2F-M5FG0ElHCsKOpGeRibk%2F-M5FqVdck8I5JLkHo54a%2Fimage.png?alt=media&token=6036b3fe-3018-443d-9fa0-5f5de7834d96)
+![image](https://github.com/sergiobriito/system-design/assets/64617586/af3d209b-dd13-4d81-8f39-d710dcadb38e)
+
 
 - **Removing a Node (Server B)**: Keys initially mapped to server B are remapped to another server.
 
-![Hash Ring](https://1865312850-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-M4Bkp-b8HYQgJF1rkOc%2F-M5FG0ElHCsKOpGeRibk%2F-M5Frah9CE4uNmXqiYMD%2Fimage.png?alt=media&token=f6b46c29-6737-4893-bb8b-62b99aa30abc)
+![image](https://github.com/sergiobriito/system-design/assets/64617586/46a53393-4eea-4e1f-b1de-6eba50b988a7)
+
 
 #### Virtual Nodes
 
@@ -152,17 +158,20 @@ The basic setup may lead to uneven server loads. To address this, multiple hash 
 - "Bob" maps to server B via B0
 - "Casey" maps to server C via C1
 
-![Hash Ring](https://1865312850-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-M4Bkp-b8HYQgJF1rkOc%2F-M5FwA4YIBAqAjZvdVpU%2F-M5Fxrb57Z3xWBLOQ2FZ%2Fimage.png?alt=media&token=0c3a1887-ed4d-41ae-85ad-2073b00f0fba)
+![image](https://github.com/sergiobriito/system-design/assets/64617586/9b5638c8-d390-4c6e-93b5-1a5e7c5cb39d)
+
 
 #### Handling Node Changes
 
 - **Adding Server D**: Only a small portion of keys is remapped to server D (e.g., "George" from server A to server D).
 
-![Hash Ring](https://1865312850-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-M4Bkp-b8HYQgJF1rkOc%2F-M5FwA4YIBAqAjZvdVpU%2F-M5Fz1p9jfeM9g3WNVKZ%2Fimage.png?alt=media&token=88382f99-6b12-4334-9336-cf69eaf0803f)
+![image](https://github.com/sergiobriito/system-design/assets/64617586/27904988-c590-406e-9baf-af3aeca5f085)
+
 
 - **Removing Server C**: Keys initially mapped to server C are remapped to other servers (e.g., "Eric" and "David" to server A, "Casey" to server B).
 
-![Hash Ring](https://1865312850-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-M4Bkp-b8HYQgJF1rkOc%2F-M5FwA4YIBAqAjZvdVpU%2F-M5FzsRNCDxPBSgEdtJa%2Fimage.png?alt=media&token=70a0ecf7-09ce-4dc1-8183-a55d594fc045)
+![image](https://github.com/sergiobriito/system-design/assets/64617586/91113f5d-2897-46e2-98ec-2dd6b25590e9)
+
 
 #### Weight
 
@@ -179,7 +188,8 @@ The bucket organizes and stores data in distributed storage systems, serving as 
 
 Vector clocks are a technique used in distributed systems, including databases, to track the partial ordering of events across multiple nodes or processes. The primary goal is to provide a mechanism for determining the causality relationships between different events in a distributed environment. Vector clocks help maintain a consistent and accurate view of the order of events, especially in scenarios where nodes operate independently and may experience delays or communication issues.
 
-![Vector Clocks](https://substackcdn.com/image/fetch/w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fd789f2d3-32b1-4e32-a70c-a7ad2627f208_1600x1500.png)
+![image](https://github.com/sergiobriito/system-design/assets/64617586/29ea5057-1a61-4f08-b5f2-540d15321d69)
+
 
 ## Analytics and Monitoring:
 
@@ -191,7 +201,8 @@ You can perform real-time analytics on data or just dump it in a Hadoop cluster 
 
 A good knowledge of tools like Grafana, Prometheus can help with you with Analytics and monitoring and also to impress your interviewer during system design interview. Alex Xu has also shared a lot of good information on Monitoring on his book and ByteByteGo course, you can refer them as well.
 
-![Monitoring](https://res.cloudinary.com/practicaldev/image/fetch/s--xsg_RyoT--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/duwydzsa9iu824aqy303.png)
+![image](https://github.com/sergiobriito/system-design/assets/64617586/ac560205-d323-4b56-8c12-0fa6f29255f1)
+
 
 ## Reference:
 
