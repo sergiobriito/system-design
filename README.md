@@ -48,16 +48,37 @@ A load balancer distributes incoming network traffic across multiple servers to 
 
 ![image](https://github.com/sergiobriito/system-design/assets/64617586/7437cdd0-a8c3-4eeb-b3bb-60ed07c7f480)
 
-## Servers (SQL and NoSQL):
-- **SQL Servers:** Relational databases using SQL for defining and manipulating data.
-  - **MySQL:** A popular open-source relational database management system that uses SQL for defining and manipulating data. It is commonly used in web applications.
-  - **PostgreSQL:** Another open-source relational database system that supports advanced data types and has a strong focus on extensibility and standards compliance.
-  - **Microsoft SQL Server:** A relational database management system developed by Microsoft, widely used in enterprise applications and business solutions.
 
-- **NoSQL Servers:** Non-relational databases handling large volumes of unstructured or semi-structured data.
-  - **MongoDB:** A leading NoSQL database that stores data in flexible, JSON-like documents. It is particularly well-suited for handling large amounts of unstructured data and is often used in modern web applications.
-  - **Cassandra:** A distributed NoSQL database designed to handle large amounts of data across many commodity servers without any single point of failure. It is commonly used in scenarios where high availability and scalability are critical.
-  - **Redis:** A versatile, in-memory data structure store often used as a cache or message broker. While it is not a traditional relational or document-based database, it falls under the NoSQL category due to its non-relational nature.
+## Databases (SQL and NoSQL):
+
+### SQL Databases:
+
+- **Structure:** SQL databases organize data into tables with predefined schemas and establish relationships between data through keys.
+- **Query Language:** They use SQL for defining, querying, and manipulating data. SQL allows complex queries involving joins, aggregations, and transactions.
+- **ACID Properties:** SQL databases typically support ACID (Atomicity, Consistency, Isolation, Durability) properties, ensuring data integrity and reliability.
+- **Examples:** MySQL, PostgreSQL, Microsoft SQL Server.
+- **When to Use:** SQL databases are suitable for applications requiring structured data, transactions, complex queries, and where data integrity is critical.
+
+### NoSQL Databases:
+
+- **Structure:** NoSQL databases encompass various data models, handling unstructured, semi-structured, or rapidly changing data.
+- **Query Language:** NoSQL databases use different querying methods; some have their query languages, while others use APIs for data retrieval and manipulation.
+- **Scalability:** Many NoSQL databases are designed for horizontal scalability, efficiently managing large volumes of data across distributed systems.
+- **Examples:** MongoDB (document-based), Cassandra (wide-column store), Redis (key-value store).
+- **When to Use:** NoSQL databases are suitable for applications with evolving schemas, huge data volumes, distributed systems, and where high scalability and performance are crucial.
+
+
+### When to Choose Each:
+
+- **SQL Databases** are preferred when:
+  - Data has a well-defined structure and relationships.
+  - ACID compliance is necessary for data integrity.
+  - Complex queries, joins, and transactions are required.
+
+- **NoSQL Databases** are preferred when:
+  - Dealing with unstructured, semi-structured, or rapidly changing data.
+  - Scalability and high performance in a distributed environment are crucial.
+  - Flexibility in schema design and handling diverse data types is needed.
 
 
 # Database Sharding and Partitioning:
@@ -92,6 +113,18 @@ A load balancer distributes incoming network traffic across multiple servers to 
 
 ## Datacenters:
 Datacenters house computer systems, networking equipment, and resources supporting an organization's IT infrastructure.
+
+## Analytics and Monitoring:
+
+This is something that is needed in every system you create. This is a hidden requirement, no one calls it out in the requirement gathering but every interviewer wants this.
+
+User logs in or logs out? Wishlisted an item? Payment failed? It is all the information for us! Anything of importance happens, fire an event and save it in your messaging queue.
+
+You can perform real-time analytics on data or just dump it in a Hadoop cluster to use later. Similarly, if an API call is regularly failing, or if your servers are about to run out of resources, wouldn’t you like to know of it beforehand?
+
+A good knowledge of tools like Grafana, Prometheus can help with you with Analytics and monitoring and also to impress your interviewer during system design interview. Alex Xu has also shared a lot of good information on Monitoring on his book and ByteByteGo course, you can refer them as well.
+
+![image](https://github.com/sergiobriito/system-design/assets/64617586/ac560205-d323-4b56-8c12-0fa6f29255f1)
 
 ## Message Queue:
 
@@ -191,17 +224,49 @@ Vector clocks are a technique used in distributed systems, including databases, 
 ![image](https://github.com/sergiobriito/system-design/assets/64617586/29ea5057-1a61-4f08-b5f2-540d15321d69)
 
 
-## Analytics and Monitoring:
+## Hash Trees for Ensuring Database Consistency
 
-This is something that is needed in every system you create. This is a hidden requirement, no one calls it out in the requirement gathering but every interviewer wants this.
+A hash tree, also known as a Merkle tree, is a hierarchical data structure used to efficiently verify the integrity and consistency of data in a database or any other distributed system. It's particularly useful in ensuring that large amounts of data remain unchanged or consistent over time, especially in decentralized or distributed environments.
 
-User logs in or logs out? Wishlisted an item? Payment failed? It is all the information for us! Anything of importance happens, fire an event and save it in your messaging queue.
+### Structure of a Hash Tree
 
-You can perform real-time analytics on data or just dump it in a Hadoop cluster to use later. Similarly, if an API call is regularly failing, or if your servers are about to run out of resources, wouldn’t you like to know of it beforehand?
+- A hash tree consists of nodes organized in a tree-like structure.
+- Each leaf node represents a small chunk of data (such as a block or a file).
+- Non-leaf nodes are hashes of their child nodes.
+- The lowest level contains the actual data chunks, and nodes higher up contain hashes of their children.
 
-A good knowledge of tools like Grafana, Prometheus can help with you with Analytics and monitoring and also to impress your interviewer during system design interview. Alex Xu has also shared a lot of good information on Monitoring on his book and ByteByteGo course, you can refer them as well.
+### How Hashing Works
 
-![image](https://github.com/sergiobriito/system-design/assets/64617586/ac560205-d323-4b56-8c12-0fa6f29255f1)
+- A cryptographic hash function (like SHA-256) generates fixed-size hashes from the data.
+- These hashes are unique representations of the data.
+
+### Construction of the Tree
+
+- Data is recursively hashed in a binary tree structure.
+- This process continues until a single root hash, known as the Merkle root, is obtained.
+- The root hash serves as a summary of the entire dataset.
+
+### Ensuring Consistency
+
+- To verify integrity, nodes compare their root hash with the trusted source's root hash.
+- Any change in data causes a different hash value.
+- Changes propagate up the tree, affecting the root hash.
+- Even a small alteration in the data results in a mismatch in the root hash, indicating inconsistency or tampering.
+
+### Efficiency and Verification
+
+- Hash trees allow for efficient verification by comparing just a few hashes.
+- Verification is logarithmic to the number of data blocks, making it scalable for large datasets.
+- In distributed systems, comparing root hashes ensures data consistency across different nodes or peers.
+
+### Applications
+
+- Blockchain technology uses Merkle trees to ensure block and transaction integrity.
+- File systems, version control systems, and databases leverage hash trees for quick change detection and data consistency across distributed environments.
+
+In essence, hash trees serve as a robust mechanism to maintain the consistency and integrity of large datasets by allowing efficient verification through hierarchical hashing structures.
+
+![image](https://github.com/sergiobriito/system-design/assets/64617586/4d4fdef7-662b-4860-ac99-ce3f5fa2c595)
 
 
 ## Reference:
