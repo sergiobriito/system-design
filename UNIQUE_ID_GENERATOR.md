@@ -24,13 +24,15 @@ This step involves thorough comprehension of the requirements for unique IDs:
    - Relies on a centralized server for auto-incremental ID generation. Ensures uniqueness and maintains sequential order, but introduces a single point of failure. System disruptions can occur if the ticket server fails.
 
 4. **Twitter Snowflake Approach:**
+   \
+   ![image](https://github.com/sergiobriito/system-design/assets/64617586/ad45281f-c732-425d-8a10-99f0432efd6d)
+
    - Divides the ID into sections fulfilling specific requirements:
      - Timestamp: Represents the time of ID generation.
      - Datacenter ID: Identifies the data center generating the ID.
      - Machine ID: Specifies the machine within that data center.
      - Sequence number: Handles IDs generated within the same timestamp by the same machine.
    - Facilitates the creation of unique, time-ordered IDs while distributing the workload across multiple components.
-     ![image](https://github.com/sergiobriito/system-design/assets/64617586/9c03466a-ae49-4c79-8aa0-fcf5aadd209f)
 
 Each approach has distinct advantages and limitations, catering to specific system requirements such as scalability, fault tolerance, uniqueness, and ordering considerations.
 
@@ -39,6 +41,8 @@ Each approach has distinct advantages and limitations, catering to specific syst
 
 The Twitter Snowflake approach stands out as an optimal solution for generating unique IDs in distributed systems due to several key reasons that align closely with the specified requirements.
 
+\
+![image](https://github.com/sergiobriito/system-design/assets/64617586/9c03466a-ae49-4c79-8aa0-fcf5aadd209f)
 
 #### 1. Scalability and Distribution
 
