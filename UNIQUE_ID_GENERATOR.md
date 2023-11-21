@@ -30,6 +30,7 @@ This step involves thorough comprehension of the requirements for unique IDs:
      - Machine ID: Specifies the machine within that data center.
      - Sequence number: Handles IDs generated within the same timestamp by the same machine.
    - Facilitates the creation of unique, time-ordered IDs while distributing the workload across multiple components.
+     ![image](https://github.com/sergiobriito/system-design/assets/64617586/9c03466a-ae49-4c79-8aa0-fcf5aadd209f)
 
 Each approach has distinct advantages and limitations, catering to specific system requirements such as scalability, fault tolerance, uniqueness, and ordering considerations.
 
@@ -37,6 +38,7 @@ Each approach has distinct advantages and limitations, catering to specific syst
 ### Detailed Design Discussion: Twitter Snowflake Approach
 
 The Twitter Snowflake approach stands out as an optimal solution for generating unique IDs in distributed systems due to several key reasons that align closely with the specified requirements.
+
 
 #### 1. Scalability and Distribution
 
